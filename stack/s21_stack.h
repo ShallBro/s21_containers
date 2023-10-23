@@ -41,6 +41,10 @@ class stack {
   const_reference top();
   void remove_stack();
 
+  // bonus
+  template <typename... Args>
+  void insert_many_front(Args &&...args);
+
  private:
   Node *head;
   size_type stack_size;
@@ -48,5 +52,5 @@ class stack {
 
 }  // namespace s21
 
-#include "stack.tpp"
+#include "s21_stack.tpp"
 #endif  //_S21_STACK_H_

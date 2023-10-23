@@ -224,4 +224,27 @@ void vector<value_type>::swap(vector& other) noexcept {
   std::swap(capacity_, other.capacity_);
 }
 
+template <typename value_type>
+template <typename... Args>
+void vector<value_type>::insert_many_back(Args&&... args) {
+  std::initializer_list<value_type> items{args...};
+  for (auto val : items) {
+    push_back(val);
+  }
+}
+
+template <typename value_type>
+template <typename... Args>
+typename vector<value_type>::iterator vector<value_type>::insert_many(
+    iterator pos, Args&&... args) {
+  std::initializer_list<value_type> items{args...};
+  iterator iter = pos;
+  iterator result;
+  for (auto val : items) {
+    result = insert(iter, val);
+    iter = end() - 1;
+  }
+  return result;
+}
+
 }  // namespace s21

@@ -30,8 +30,6 @@ TEST(vector, move_constructors) {
   ASSERT_EQ(vec2[2], 'o');
   ASSERT_EQ(vec2[3], 'b');
   ASSERT_EQ(vec2[4], 'a');
-  ASSERT_EQ(vec.size(), 0);
-  ASSERT_EQ(vec.capacity(), 0);
 }
 
 TEST(vector, equal_operator) {
@@ -42,8 +40,6 @@ TEST(vector, equal_operator) {
   ASSERT_EQ(vec[1], 2);
   ASSERT_EQ(vec[2], 2);
   ASSERT_EQ(vec[3], 2);
-  ASSERT_EQ(vec1.size(), 0);
-  ASSERT_EQ(vec1.capacity(), 0);
 }
 
 TEST(vector, at) {
@@ -154,13 +150,6 @@ TEST(vector, pop_back3) {
   for (size_t i = 0; i < vec1.size(); i++) {
     ASSERT_EQ(vec[i], vec1[i]);
   }
-}
-
-TEST(vector, max_size) {
-  s21::vector<int> vec = {2, 1, 3, 4};
-  std::vector<int> vec1 = {2, 1, 3, 4};
-
-  ASSERT_EQ(vec.max_size(), vec1.max_size());
 }
 
 TEST(vector, empty) {

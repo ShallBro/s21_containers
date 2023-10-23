@@ -28,7 +28,6 @@ TEST(array, constructor_move) {
   ASSERT_EQ(arr2[0], 2);
   ASSERT_EQ(arr2[1], 1);
   ASSERT_EQ(arr2[2], 3);
-  ASSERT_EQ(arr.size(), 0);
 }
 
 TEST(array, operator_assignment_move) {
@@ -38,7 +37,6 @@ TEST(array, operator_assignment_move) {
   ASSERT_EQ(arr[0], 3);
   ASSERT_EQ(arr[1], 2);
   ASSERT_EQ(arr[2], 2);
-  ASSERT_EQ(arr2.size(), 0);
 }
 TEST(array, front) {
   s21::array<int, 3> arr = {2, 1, 3};

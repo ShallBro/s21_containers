@@ -1,5 +1,5 @@
-#ifndef CPP2_S21_CONTAINERS_SRC_
-#define CPP2_S21_CONTAINERS_SRC_
+#ifndef CPP2_S21_CONTAINERS_SRC_ARRAY_
+#define CPP2_S21_CONTAINERS_SRC_ARRAY_
 
 #include <cstddef>
 #include <initializer_list>
@@ -45,4 +45,4 @@ class array {
 }  // namespace s21
 
 #include "s21_array.tpp"
-#endif  // CPP2_S21_CONTAINERS_SRC_
+#endif  // CPP2_S21_CONTAINERS_SRC_ARRAY_

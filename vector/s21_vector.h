@@ -46,6 +46,11 @@ class vector {
   void reserve(size_type size);
   size_type capacity() const noexcept;
   void shrink_to_fit();
+  // bonus
+  template <typename... Args>
+  iterator insert_many(iterator pos, Args &&...args);
+  template <typename... Args>
+  void insert_many_back(Args &&...args);
 
  private:
   iterator data_;

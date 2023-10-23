@@ -1,8 +1,4 @@
-#include "../stack.h"
-
-#include <gtest/gtest.h>
-
-#include <stack>
+#include "test_main.h"
 
 TEST(stack, case1) {
   s21::stack<int> s21_stack_int;
@@ -38,66 +34,66 @@ TEST(stack, case2) {
 }
 
 TEST(stack, CopyConstructor) {
-    s21::stack<int> my_stack1;
-    std::stack<int> std_stack1;
+  s21::stack<int> my_stack1;
+  std::stack<int> std_stack1;
 
-    my_stack1.push(1);
-    my_stack1.push(2);
-    my_stack1.push(3);
-    std_stack1.push(1);
-    std_stack1.push(2);
-    std_stack1.push(3);
+  my_stack1.push(1);
+  my_stack1.push(2);
+  my_stack1.push(3);
+  std_stack1.push(1);
+  std_stack1.push(2);
+  std_stack1.push(3);
 
-    s21::stack<int> my_stack2(my_stack1);
-    std::stack<int> std_stack2(std_stack1);
+  s21::stack<int> my_stack2(my_stack1);
+  std::stack<int> std_stack2(std_stack1);
 
-    ASSERT_EQ(my_stack1.empty(), std_stack1.empty());
-    ASSERT_EQ(my_stack1.size(), std_stack1.size());
-    ASSERT_EQ(my_stack2.empty(), std_stack2.empty());
-    ASSERT_EQ(my_stack2.size(), std_stack2.size());
-    ASSERT_EQ(my_stack1.top(), std_stack1.top());
-    ASSERT_EQ(my_stack2.top(), std_stack2.top());
+  ASSERT_EQ(my_stack1.empty(), std_stack1.empty());
+  ASSERT_EQ(my_stack1.size(), std_stack1.size());
+  ASSERT_EQ(my_stack2.empty(), std_stack2.empty());
+  ASSERT_EQ(my_stack2.size(), std_stack2.size());
+  ASSERT_EQ(my_stack1.top(), std_stack1.top());
+  ASSERT_EQ(my_stack2.top(), std_stack2.top());
 }
 
 TEST(stack, MoveConstructor) {
-    s21::stack<int> my_stack1;
-    std::stack<int> std_stack1;
+  s21::stack<int> my_stack1;
+  std::stack<int> std_stack1;
 
-    my_stack1.push(1);
-    my_stack1.push(2);
-    my_stack1.push(3);
-    std_stack1.push(1);
-    std_stack1.push(2);
-    std_stack1.push(3);
+  my_stack1.push(1);
+  my_stack1.push(2);
+  my_stack1.push(3);
+  std_stack1.push(1);
+  std_stack1.push(2);
+  std_stack1.push(3);
 
-    s21::stack<int> my_stack2(std::move(my_stack1));
-    std::stack<int> std_stack2(std::move(std_stack1));
+  s21::stack<int> my_stack2(std::move(my_stack1));
+  std::stack<int> std_stack2(std::move(std_stack1));
 
-    ASSERT_EQ(my_stack2.empty(), std_stack2.empty());
-    ASSERT_EQ(my_stack2.size(), std_stack2.size());
-    ASSERT_EQ(my_stack2.top(), std_stack2.top());
+  ASSERT_EQ(my_stack2.empty(), std_stack2.empty());
+  ASSERT_EQ(my_stack2.size(), std_stack2.size());
+  ASSERT_EQ(my_stack2.top(), std_stack2.top());
 }
 
 TEST(stack, MoveAssignmentOperator) {
-    s21::stack<int> my_stack1;
-    std::stack<int> std_stack1;
+  s21::stack<int> my_stack1;
+  std::stack<int> std_stack1;
 
-    my_stack1.push(1);
-    my_stack1.push(2);
-    my_stack1.push(3);
-    std_stack1.push(1);
-    std_stack1.push(2);
-    std_stack1.push(3);
+  my_stack1.push(1);
+  my_stack1.push(2);
+  my_stack1.push(3);
+  std_stack1.push(1);
+  std_stack1.push(2);
+  std_stack1.push(3);
 
-    s21::stack<int> my_stack2;
-    std::stack<int> std_stack2;
+  s21::stack<int> my_stack2;
+  std::stack<int> std_stack2;
 
-    my_stack2 = std::move(my_stack1);
-    std_stack2 = std::move(std_stack1);
+  my_stack2 = std::move(my_stack1);
+  std_stack2 = std::move(std_stack1);
 
-    ASSERT_EQ(my_stack2.empty(), std_stack2.empty());
-    ASSERT_EQ(my_stack2.size(), std_stack2.size());
-    ASSERT_EQ(my_stack2.top(), std_stack2.top());
+  ASSERT_EQ(my_stack2.empty(), std_stack2.empty());
+  ASSERT_EQ(my_stack2.size(), std_stack2.size());
+  ASSERT_EQ(my_stack2.top(), std_stack2.top());
 }
 
 TEST(stack, case5) {
@@ -340,4 +336,16 @@ TEST(STACK_SWAP, case2) {
   EXPECT_EQ(s21_stack_ref_string.top(), "15");
   EXPECT_EQ(s21_stack_res_string.size(), 5U);
   EXPECT_EQ(s21_stack_res_string.top(), "!!");
+}
+
+TEST(STACK_INSERT_MANY_FRONT, case1) {
+  s21::stack<int> my_stack{6, 7, 9};
+  s21::stack<int> res_stack{6, 7, 9, 1, 2, 8};
+  my_stack.insert_many_front(1, 2, 8);
+  size_t stack_size = res_stack.size();
+  for (size_t i = 0; i < stack_size; i++) {
+    ASSERT_EQ(my_stack.top(), res_stack.top());
+    my_stack.pop();
+    res_stack.pop();
+  }
 }

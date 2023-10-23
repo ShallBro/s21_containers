@@ -88,18 +88,26 @@ class list {
   void pop_front();
   void swap(list &other);
   void merge(list &other);
-  void splice(const_iterator pos, list &other);
+  void splice(iterator pos, list &other);
   void reverse();
   void unique();
   void sort();
 
+  // bonus
+  template <typename... Args>
+  void insert_many_front(Args &&...args);
+  template <typename... Args>
+  void insert_many_back(Args &&...args);
+  template <typename... Args>
+  iterator insert_many(iterator pos, Args &&...args);
+
  private:
   Node *head;
   Node *tail;
-  // Node *cur;
+  Node *base;
   size_type list_size;
 };
 }  // namespace s21
 
-#include "list.tpp"
+#include "s21_list.tpp"
 #endif  // CPP2_S21_CONTAINERS_1_LIST_H

@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "s21_stack.h"
 
 namespace s21 {
 template <typename T>
@@ -8,7 +8,7 @@ stack<T>::Node::Node() {
 
 template <typename T>
 stack<T>::Node::Node(value_type value) : Node() {
-  value = value;
+  this->value = value;
 }
 
 template <typename T>
@@ -102,6 +102,15 @@ template <typename T>
 void stack<T>::remove_stack() {
   while (head) {
     pop();
+  }
+}
+
+template <typename T>
+template <typename... Args>
+void stack<T>::insert_many_front(Args &&...args) {
+  std::initializer_list<value_type> items{args...};
+  for (auto val : items) {
+    push(val);
   }
 }
 }  // namespace s21

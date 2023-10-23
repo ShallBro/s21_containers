@@ -4,24 +4,26 @@
 #include <initializer_list>
 #include <iostream>
 
+#include "../list/s21_list.h"
+
 namespace s21 {
 template <typename T>
 class queue {
  public:
-  class Node;
+  /*  class Node;*/
   using value_type = T;
   using reference = T &;
   using const_reference = const T &;
   using size_type = size_t;
 
-  class Node {
-   public:
-    Node *prev;
-    Node *next;
-    value_type value;
-    Node();
-    explicit Node(value_type value);
-  };
+  /*  class Node {
+     public:
+      Node *prev;
+      Node *next;
+      value_type value;
+      Node();
+      explicit Node(value_type value);
+    };*/
 
   // constructors
   queue();
@@ -46,13 +48,18 @@ class queue {
   void pop();
   void swap(queue &other);
 
+  // bonus
+  template <typename... Args>
+  void insert_many_back(Args &&...args);
+
  private:
-  Node *head;
-  Node *tail;
-  size_type queue_size;
+  /*  Node *head;
+    Node *tail;
+    size_type queue_size;*/
+  s21::list<value_type> list;
 };
 
 }  // namespace s21
 
-#include "queue.tpp"
+#include "s21_queue.tpp"
 #endif  // CPP2_S21_CONTAINERS_1_QUEUE_H
